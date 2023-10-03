@@ -1,17 +1,30 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.math.BigDecimal;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class ContaTerminal {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        System.out.println("Por favor, digite o número da Agência!");
+        int agencia = sc.nextInt();
+
+        sc.nextLine();
+        System.out.println("Por favor, digite o número da Conta!");
+        String numero = sc.nextLine();
+
+        System.out.println("Agora me diga seu nome!");
+        String nome = sc.nextLine();
+
+        System.out.println("Por favor, deposite um valor acima de R$10,00 para abrir sua conta!");
+        BigDecimal saldo = sc.nextBigDecimal();
+
+        Conta conta = new Conta(numero, agencia, nome, saldo);
+
+        System.out.printf("Olá %s, obrigado por criar uma conta em nosso banco, sua agência é %d, conta %s e seu saldo %s já está disponível para saque.", conta.getNome(), conta.getAgencia(), conta.getNumeroConta(), conta.getSaldo());
+
+        sc.close();
     }
 }
